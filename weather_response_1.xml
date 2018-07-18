@@ -1,0 +1,3 @@
+<web:GetCitiesByCountryResponse xmlns:web="http://www.webserviceX.NET">
+	<web:GetCitiesByCountryResult>{Kraj}: Warszawa</web:GetCitiesByCountryResult>
+</web:GetCitiesByCountryResponse>

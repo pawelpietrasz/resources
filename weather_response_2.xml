@@ -1,0 +1,3 @@
+<web:GetWeatherResponse xmlns:web="http://www.webserviceX.NET">
+    <web:GetWeatherResult>{Kraj}:{Miasto}. {data} 16 stopni</web:GetWeatherResult>
+</web:GetWeatherResponse>

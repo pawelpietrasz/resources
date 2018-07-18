@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="df07f8b4-a396-40f1-a942-373a837f2d05" activeEnvironment="Default" name="w" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="fd465205-6e69-4df8-9fda-ac5b5cc08796" wsaVersion="NONE" name="WeatherServiceSoapBinding" type="wsdl" bindingName="{http://mynamespace.com}WeatherServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8978/w?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8978/w?wsdl"><con:part><con:url>http://localhost:8978/w?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="WeatherService" targetNamespace="http://mynamespace.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://mynamespace.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://DefaultNamespace" xmlns:tns="http://DefaultNamespace">
+      <xsd:complexType name="Weather">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="country" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="date" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="humidity" type="xsd:double"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://mynamespace.com" xmlns:ns0="http://DefaultNamespace">
+      <xsd:import namespace="http://DefaultNamespace"/>
+      <xsd:element name="getWeather" type="tns:getWeather"/>
+      <xsd:complexType name="getWeather">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getWeatherResponse" type="tns:getWeatherResponse"/>
+      <xsd:complexType name="getWeatherResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="return" type="ns0:Weather"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getWeather">
+    <wsdl:part element="tns:getWeather" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWeatherResponse">
+    <wsdl:part element="tns:getWeatherResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WeatherServicePortType">
+    <wsdl:operation name="getWeather">
+      <wsdl:input message="tns:getWeather" name="getWeather"></wsdl:input>
+      <wsdl:output message="tns:getWeatherResponse" name="getWeatherResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WeatherServiceSoapBinding" type="tns:WeatherServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getWeather">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getWeather">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getWeatherResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WeatherService">
+    <wsdl:port binding="tns:WeatherServiceSoapBinding" name="WeatherServicePort">
+      <soap:address location="http://localhost:8978/w"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8978/w</con:endpoint></con:endpoints><con:operation id="552a2225-0187-4a11-864a-27b87b82eb52" isOneWay="false" action="" name="getWeather" bindingOperationName="getWeather" type="Request-Response" outputName="getWeatherResponse" inputName="getWeather" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9523d03b-1a4d-47ec-82b4-b7f848656423" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8978/w</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:myn="http://mynamespace.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <myn:getWeather>\r
+         <!--Optional:-->\r
+         <myn:arg0>Poland</myn:arg0>\r
+      </myn:getWeather>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://mynamespace.com/WeatherServicePortType/getWeather"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
