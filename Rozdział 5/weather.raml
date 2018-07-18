@@ -1,0 +1,64 @@
+#%RAML 1.0
+title: Weather
+mediaType: application/json
+
+types: 
+  location:
+    properties: 
+      lat: 
+        type: number
+      long: 
+        type: number
+  city:
+    properties: 
+      name:
+      code:
+      location: location
+  forecast:
+    properties: 
+      city:
+      temperature: 
+        type: number
+      date:
+        type: date-only
+
+/countries:
+  /{country}:
+    /cities:
+      get:
+        responses: 
+          200:
+            body:
+              type: city[]
+      post:
+        body:
+          application/json:
+            type: city
+            example: |
+              {
+                "name": "Warszawa",
+                "code": "WA",
+                "location": {
+                  "lat": 52.2,
+                  "long": 21.0 
+                }
+              }
+        responses:
+            200:
+              body:
+                application/json:
+                  example: | 
+                    {
+                      "id": "Warszawa - Wa",
+                      "geo": "(52.2, 21.0)"
+                    }
+/weather:
+  get:
+    queryParameters: 
+      city: 
+      country:
+    responses:
+      200:
+        body:
+          type: forecast
+  
